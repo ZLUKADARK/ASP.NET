@@ -1,8 +1,83 @@
 ﻿@{
-    ViewData["Title"] = "Home Page";
+    ViewBag.Title = "Главная страница";
 }
+<h2>@ViewData["Text"]</h2>
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
-</div>
+<h2>Список</h2>
+<ol type="A">
+    @for (int i = 1; i < 5; i++)
+    {
+        <li>элемент @i списка</li>
+    }
+</ol>
+
+<hr>
+<h2>Форма</h2>
+<form role="form" method="get">
+    <select asp-items="@ViewData["Lst"] as SelectList"> ФОРМА   </select>
+        <fieldset class="form-group">
+            <!-- Радио -->
+            <div class="row">
+                <legend class="col-form-label col-sm-2 pt-0">Радио</legend>
+                <div class="col-sm-10">
+                    <div class="form-check-inline">
+                        <input class="form-check-input" type="radio" name="gridRadios1" id="gridRadios1" value="option1">
+                        <label class="form-check-label" for="gridRadios1">
+                            Радио 1
+                        </label>
+                    </div>
+                    <div class="form-check-inline">
+                        <input class="form-check-input" type="radio" name="gridRadios2" id="gridRadios2" value="option2">
+                        <label class="form-check-label" for="gridRadios2">
+                            Радио 2
+                        </label>
+                    </div>
+                    <div class="form-check-inline disabled">
+                        <input class="form-check-input" type="radio" name="gridRadios3" id="gridRadios3" value="option3">
+                        <label class="form-check-label" for="gridRadios3">
+                            Радио 3
+                        </label>
+                    </div>
+                </div>
+            </div>
+        </fieldset>
+        <!-- Чекбокс -->
+        <div class="form-group row">
+            <div class="col-sm-10">
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" id="gridCheck1" name="check1">
+                    <label class="form-check-label" for="gridCheck1">
+                        Чек-Бокс-1
+                    </label>
+                </div>
+            </div>
+        </div>
+        <div class="form-group row">
+            <div class="col-sm-10">
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" id="gridCheck1" name="check2">
+                    <label class="form-check-label" for="gridCheck1">
+                        Чек-Бокс-2
+                    </label>
+                </div>
+            </div>
+        </div>
+        <!-- Форма -->
+        <div class="form-group row">
+            <label for="inputEmail3" class="col-sm-2 col-form-label">Email</label>
+            <div class="col-sm-10">
+                <input type="email" class="form-control" id="inputEmail3" placeholder="Email" name="mail">
+            </div>
+        </div>
+        <div class="form-group row">
+            <label for="inputPassword3" class="col-sm-2 col-form-label">Password</label>
+            <div class="col-sm-10">
+                <input type="password" class="form-control" id="inputPassword3" placeholder="Password" name="pass">
+            </div>
+        </div>
+        <div class="form-group row">
+            <div class="col-sm-10">
+                <button type="submit" class="btn btn-primary">Отправить</button>
+            </div>
+        </div>
+</form>
