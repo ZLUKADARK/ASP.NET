@@ -19,4 +19,8 @@
     <ProjectReference Include="..\WebApplication1.DAL\WebApplication1.DAL.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="wwwroot\images\" />
+  </ItemGroup>
+
 </Project>
