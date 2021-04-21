@@ -4,24 +4,40 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using WebApplication1.DAL.Entities;
+using WebApplication1.Models;
+using WebLabsV05.Extensions;
 
 namespace WebApplication1.Controllers
 {
     public class ProductController : Controller
     {
-        List<Dish> _dishes;
+        public List<Dish> _dishes;
         List<DishGroup> _dishGroups;
+        int _pageSize;
         public ProductController()
         {
+            _pageSize = 3;
             SetupData();
+
         }
-        public IActionResult Index()
+
+        [Route("Catalog")]
+        [Route("Catalog/Page_{pageNo}")]
+        public IActionResult Index(int? group, int pageNo = 1)
         {
-            return View(_dishes);
+
+            var dishesFiltered = _dishes
+            .Where(d => !group.HasValue || d.DishGroupId == group.Value);
+            // Получить id текущей группы и поместить в TempData
+            ViewData["Groups"] = _dishGroups;
+            ViewData["CurrentGroup"] = group ?? 0;
+
+            var model = ListViewModel<Dish>.GetModel(dishesFiltered, pageNo, _pageSize);
+            if (Request.IsAjaxRequest())
+                return PartialView("_listpartial", model);
+            else
+                return View(model);
         }
-        /// <summary>
-        /// Инициализация списков
-        /// </summary>
         private void SetupData()
         {
             _dishGroups = new List<DishGroup>
@@ -37,22 +53,22 @@ namespace WebApplication1.Controllers
                 {
                     new Dish {DishId = 1, DishName="Грибной суп",
                     Description="Лук, картофель, сливки, грибы шампиньоны.",
-                    Calories =180, DishGroupId=3, Image="Soup1.png" },
+                    Calories =180, DishGroupId=3, Image="s1.jpg" },
                     new Dish { DishId = 2, DishName="Томатный суп",
                     Description="Лук, чеснок, помидоры, итальянские травы, перец",
-                    Calories =330, DishGroupId=3, Image="Soup2.jpg" },
+                    Calories =330, DishGroupId=3, Image="s2.jpg" },
                     new Dish { DishId = 3, DishName="Салат сыттов",
                     Description="Фасоль, корейская морковь, сыр, сухари, зелень.",
-                    Calories =120, DishGroupId=4, Image="Salad.png" },
+                    Calories =120, DishGroupId=2, Image="sl1.jpg" },
                     new Dish { DishId = 4, DishName="Салат с тунцом",
                     Description="Тунец, салат, помидор. Подается в пите из пшеничной муки",
-                    Calories =240, DishGroupId=4, Image="Salad2.jpg" },
+                    Calories =240, DishGroupId=2, Image="sl2.jpg" },
                     new Dish { DishId = 5, DishName="Морс Gedonia клюква",
                     Description="500 мл, Вода очищенная, клюква, сахар, брусника.",
-                    Calories =55, DishGroupId=5, Image="Mors.png" },
+                    Calories =55, DishGroupId=5, Image="n1.jpg" },
                     new Dish { DishId = 5, DishName="Fanta",
                     Description="500 мл, Газированный напиток со вкусом апельсина.",
-                    Calories =40, DishGroupId=5, Image="Fanta.png" }
+                    Calories =40, DishGroupId=5, Image="n2.jpeg" }
                 };
         }
     }
