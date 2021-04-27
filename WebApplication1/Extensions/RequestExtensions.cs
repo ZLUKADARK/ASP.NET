@@ -1,5 +1,5 @@
 ﻿using Microsoft.AspNetCore.Http;
-namespace WebLabsV05.Extensions
+namespace WebApplication1.Extensions
 {
     public static class RequestExtensions
     {

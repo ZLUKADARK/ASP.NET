@@ -5,7 +5,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using WebApplication1.DAL.Entities;
 using WebApplication1.Models;
-using WebLabsV05.Extensions;
+using WebApplication1.Extensions;
 
 namespace WebApplication1.Controllers
 {
