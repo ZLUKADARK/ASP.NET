@@ -16,7 +16,7 @@
         @{ // Получение текущего адреса
             var request = ViewContext.HttpContext.Request;
             var returnUrl = request.Path +
-            request.QueryString.ToUriComponent();
+           request.QueryString.ToUriComponent();
         }
         <!--Разметка кнопки добавления в корзину-->
         <p class="mt-2">
