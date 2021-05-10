@@ -7,7 +7,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace WebApplication1
+namespace WebApplication.Blazor
 {
     public class Program
     {
@@ -21,11 +21,6 @@ namespace WebApplication1
                 .ConfigureWebHostDefaults(webBuilder =>
                 {
                     webBuilder.UseStartup<Startup>();
-                })
-                 .ConfigureLogging(lp =>
-                 {
-                     lp.ClearProviders();
-                     lp.AddFilter("Microsoft", LogLevel.None);
-                 });
+                });
     }
 }

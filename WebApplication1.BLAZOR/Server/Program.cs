@@ -1,4 +1,4 @@
-using Microsoft.AspNetCore.Hosting;
+﻿using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
@@ -7,7 +7,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace WebApplication1
+namespace WebApplication1.BLAZOR.Server
 {
     public class Program
     {
@@ -21,11 +21,6 @@ namespace WebApplication1
                 .ConfigureWebHostDefaults(webBuilder =>
                 {
                     webBuilder.UseStartup<Startup>();
-                })
-                 .ConfigureLogging(lp =>
-                 {
-                     lp.ClearProviders();
-                     lp.AddFilter("Microsoft", LogLevel.None);
-                 });
+                });
     }
 }

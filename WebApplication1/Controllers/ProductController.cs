@@ -8,6 +8,7 @@ using WebApplication1.Models;
 using WebApplication1.Extensions;
 using WebApplication1.DAL.Data;
 using Microsoft.AspNetCore.Mvc.Rendering;
+using Microsoft.Extensions.Logging;
 
 namespace WebApplication1.Controllers
 {
@@ -16,11 +17,13 @@ namespace WebApplication1.Controllers
 
         ApplicationDbContext _context;
         int _pageSize;
-
-        public ProductController(ApplicationDbContext context)
+        
+        private ILogger _logger;
+        public ProductController(ApplicationDbContext context, ILogger<ProductController> logger)
         {
             _pageSize = 3;
             _context = context;
+            _logger = logger;
         }
 
         [Route("Catalog")]
@@ -33,7 +36,7 @@ namespace WebApplication1.Controllers
             ViewData["Groups"] = _context.DishGroups;
             ViewData["CurrentGroup"] = group ?? 0;
             ViewData["DishGroupId"] = new SelectList(_context.DishGroups, "DishGroupId", "GroupName");
-
+            _logger.LogInformation($"info: group={group}, page={pageNo}");
             var model = ListViewModel<Dish>.GetModel(dishesFiltered, pageNo, _pageSize);
             if (Request.IsAjaxRequest())
                 return PartialView("_listpartial", model);
