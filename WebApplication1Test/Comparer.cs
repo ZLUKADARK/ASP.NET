@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace WebApplication1Test
+namespace WebApplication1.Tests
 {
     class Comparer<T> : IEqualityComparer<T>
     {

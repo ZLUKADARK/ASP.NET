@@ -5,39 +5,49 @@
 {
     @await Component.InvokeAsync("Cart")
 
-    <div class="dropdown-toggle" id="dropdownMenuButton"
-         data-toggle="dropdown"
-         aria-haspopup="true" aria-expanded="false">
-        <img img-action="GetAvatar"
-             img-controller="Image"
-             width="30" alt="User"
-             class="rounded bg-light" />
-    </div>
-    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-        <div class="dropdown-item-text">
+
+    <div class="dropdown ml-4 nav-color">
+
+        <div class="dropdown-toggle" id="dropdownMenuButton"
+             data-toggle="dropdown"
+             aria-haspopup="true" aria-expanded="false">
             <img img-action="GetAvatar"
                  img-controller="Image"
                  width="30" alt="User"
                  class="rounded bg-light" />
-            @User.Identity.Name
-            @*  user@mail.ru*@
+
+
         </div>
-        <div class="dropdown-divider"></div>
-        <a class="dropdown-item" asp-controller="Cart" asp-
-           action="Index">Мои товары</a>
-        <form asp-area="Identity"
-              asp-page="/Account/Logout"
-              asp-route-returnurl="@ViewContext.HttpContext.Request.Path">
+        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+            <div class="dropdown-item-text">
+                <img img-action="GetAvatar"
+                     img-controller="Image"
+                     width="30" alt="User"
+                     class="rounded bg-light" />
+                @User.Identity.Name
 
-            <input type="submit"
-                   value="Log off"
-                   class="dropdown-item" />
+                <!--user@mail.ru-->
 
-        </form>
-        @*<a class="dropdown-item" asp-area="Identity"
-            asp-page="/Account/Logout">Log off</a>*@
+            </div>
+            <div class="dropdown-divider"></div>
+
+            <a class="dropdown-item" asp-controller="Cart" asp-
+               action="Index">Мои товары</a>
+            <form asp-area="Identity"
+                  asp-page="/Account/Logout"
+                  asp-route-returnurl="@ViewContext.HttpContext.Request.Path">
+
+                <input type="submit"
+                       value="Log off"
+                       class="dropdown-item" />
+
+            </form>
+
+            <!--<a class="dropdown-item" asp-area="Identity"-->
+            <!--asp-page="/Account/Logout">Log off</a>-->
+
+        </div>
     </div>
-
 }
 else
 {
