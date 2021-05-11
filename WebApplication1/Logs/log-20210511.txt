@@ -133,3 +133,8 @@
 2021-05-11T13:00:46.5769544+06:00  [INF] Request /Cart/Add/4?returnUrl=%2FCatalog%2FPage_1%3Fgroup%3D4 returns status code 302 (288d684c)
 2021-05-11T13:00:46.5844293+06:00  [INF] info: group=4, page=1 (39d186bf)
 2021-05-11T13:00:51.1434039+06:00  [INF] Request /Cart/Delete/4 returns status code 302 (0a9561f9)
+2021-05-11T13:07:40.8364183+06:00  [INF] Now listening on: "https://localhost:5001" (d826f4b8)
+2021-05-11T13:07:40.8424605+06:00  [INF] Now listening on: "http://localhost:5000" (d826f4b8)
+2021-05-11T13:07:40.8428694+06:00  [INF] Application started. Press Ctrl+C to shut down. (dcaefe54)
+2021-05-11T13:07:40.8429259+06:00  [INF] Hosting environment: "Development" (c3307c92)
+2021-05-11T13:07:40.8429508+06:00  [INF] Content root path: "C:\Users\ZLUKA\Desktop\ASP.NET\WebApplication1" (b5d60022)
