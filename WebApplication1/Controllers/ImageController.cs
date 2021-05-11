@@ -4,7 +4,7 @@ using Microsoft.AspNetCore.Mvc;
 using System.Threading.Tasks;
 using WebApplication1.DAL.Entities;
 
-namespace WebService.Controllers
+namespace WebApplication1.Controllers
 {
     public class ImageController : Controller
     {
